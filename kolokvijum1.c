@@ -13,16 +13,6 @@ void ucitaj_matricu(int* matrica, int n, int m) {
     }
 }
 
-int suma(int* matrica, int n, int m, int*(*funIzdvoj) (int*, int, int, int(*) (int)), int(*funParnost) (int)) {
-    int* niz = funIzdvoj(matrica, n, m, funParnost);
-    int suma = 0;
-    for(int i = 0; i < duzina; i++) {
-        suma += niz[i];
-    }
-    free(niz);
-    return suma;
-}
-
 int paran(int broj) {
     return !(broj%2);
 }
@@ -75,6 +65,16 @@ int* izdvoj_male(int* matrica, int n, int m, int (*funkcija) (int)) {
         }
     }
     return niz;
+}
+
+int suma(int* matrica, int n, int m, int*(*funIzdvoj) (int*, int, int, int(*) (int)), int(*funParnost) (int)) {
+    int* niz = funIzdvoj(matrica, n, m, funParnost);
+    int suma = 0;
+    for(int i = 0; i < duzina; i++) {
+        suma += niz[i];
+    }
+    free(niz);
+    return suma;
 }
 
 int main() {
